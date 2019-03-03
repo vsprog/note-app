@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-about',
   template: `
   <div class="jumbotron">
-    <h1 class="display-3">Cards App</h1>
+    <h1 class="display-3" i18n>Cards App</h1>
   </div>
   `,
   styles: []

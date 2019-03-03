@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
+    "start-en": "ng serve --configuration=en",
+    "start-ru": "ng serve --configuration=ru",
     "build": "ng build",
+    "build-ru": "ng build --configuration=ru",
+    "build-en": "ng build --configuration=en",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -35,7 +39,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
-    "@angular/cli": "~7.3.0",
+    "@angular/cli": "^7.3.4",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
     "@types/jasmine": "~2.8.8",
