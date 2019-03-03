@@ -9,7 +9,7 @@ export interface State {
 
 export const reducers: ActionReducerMap<State> = {
     cards: fromCards.reducer
-}
+};
 
 export function logger(reducer: ActionReducer<State>): any {
     // default, no options

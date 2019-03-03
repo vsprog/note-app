@@ -19,9 +19,10 @@ import { CardListComponent } from './card-list/card-list.component';
 import { NewCardInputComponent } from './new-card-input/new-card-input.component';
 import { CardService } from './services/card.service';
 import { environment } from './../environments/environment';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
-  declarations: [AppComponent, CardComponent, CardListComponent, NewCardInputComponent],
+  declarations: [AppComponent, CardComponent, CardListComponent, NewCardInputComponent, AboutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
