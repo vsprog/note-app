@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {CardService} from '../services/card.service';
-import { of } from 'rxjs/observable/of';
 
 import * as Cards from '../actions/cards';
 
 import {exhaustMap, map, mergeMap, catchError} from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class CardsEffects {
@@ -39,10 +39,10 @@ export class CardsEffects {
   addCards$ = this.actions$.pipe(
     ofType(Cards.ADD),
     map((action: Cards.Add) => action.payload),
-      exhaustMap(payload => {
-        this.cardService.createCard(payload);
-        return of(null);
-      })
+    exhaustMap(payload => {
+      this.cardService.createCard(payload);
+      return of(null);
+    })
   );
 
   @Effect({dispatch: false})

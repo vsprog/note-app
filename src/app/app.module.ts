@@ -13,8 +13,8 @@ import { reducers, metaReducers } from './reducers/root';
 const routes: Routes = [
   {path: '', redirectTo: 'about', pathMatch: 'full'},
   {path: 'about', component: AboutComponent},
-  { path: 'cards', loadChildren: './cards.module#CardsModule'}
-]
+  {path: 'cards', loadChildren: './cards.module#CardsModule'}
+];
 
 @NgModule({
   declarations: [
