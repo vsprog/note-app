@@ -1,30 +1,47 @@
-import * as fromCards from './cards';
-import * as fromUser from './user.reducers';
 import {ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer} from '@ngrx/store';
-import * as fromRoot from './root';
+import {storeLogger} from 'ngrx-store-logger';
+import {environment} from '../../environments/environment';
+import * as fromUser from './user.reducers';
+import * as fromCards from './cards';
 
-export interface AppState {
-    cardsState: fromCards.State;
-    userState: fromUser.State;
+export interface State {
+  userState: fromUser.State;
+  cardsState: fromCards.State;
 }
 
-export interface State extends fromRoot.State {
-    appState: AppState;
-}
-
-export const reducers = {
-    cardsState: fromCards.reducer,
-    userState: fromUser.reducer,
+export const reducers: ActionReducerMap<State> = {
+  userState: fromUser.reducer,
+  cardsState: fromCards.reducer,
 };
 
-export const selectAppState = createFeatureSelector<AppState>('appState');
+export function logger(reducer: ActionReducer<State>): any {
+    // default, no options
+    return storeLogger()(reducer);
+}
 
-export const getCards = createSelector(
-    selectAppState,
-    (state: AppState) => state.cardsState.cards // state из reducers/cards.ts
-);
+export const metaReducers: MetaReducer<State>[] = !environment.production
+  ? [logger]
+  : [];
+
+export const getUserState = createFeatureSelector<fromUser.State>('userState');
+export const getCardsState = createFeatureSelector<fromCards.State>('cardsState');
 
 export const getUser = createSelector(
-    selectAppState,
-    (state: AppState) => state.userState.user
+  getUserState,
+  state => state.user
+);
+
+export const getError = createSelector(
+  getUserState,
+  state => state.error
+);
+
+export const isLoading = createSelector(
+  getUserState,
+  state => state.loading
+);
+
+export const getCards = createSelector(
+    getCardsState,
+    state => state.cards
 );
