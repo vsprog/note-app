@@ -19,4 +19,14 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new user.GetUser());
     this.user$ = this.store.select(fromRoot.getUser);
   }
+
+  SignInGoogle(event: MouseEvent): void {
+    event.stopPropagation();
+    this.store.dispatch(new user.GoogleLogin());
+  }
+
+  SignOut(event: MouseEvent): void {
+    event.stopPropagation();
+    this.store.dispatch(new user.Logout());
+  }
 }

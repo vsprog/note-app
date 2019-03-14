@@ -1,16 +1,29 @@
 <!-- Fixed navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#">Angular Notes</a>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item" [routerLinkActive]="['active']">
-      <a class="nav-link" [routerLink]="['cards']">Cards</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]="['active']">
-      <a class="nav-link" [routerLink]="['about']">About</a>
-    </li>
-    <li class="nav-item" [routerLinkActive]="['active']">
-      <a class="nav-link" [routerLink]="">{{ (user$ | async)?.displayName }}</a>
-    </li>
-  </ul>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav w-100">
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['cards']">Cards</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['about']">About</a>
+      </li>
+      <li class="nav-item dropdown ml-auto">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ (user$ | async)?.displayName }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Sign in</a>
+          <a class="dropdown-item" href="#" (click)="SignInGoogle($event)">Sign in via Google</a>
+          <a class="dropdown-item" href="#">Sign up</a>
+          <a class="dropdown-item" href="#" (click)="SignOut($event)">Sign out</a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>
