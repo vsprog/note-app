@@ -18,7 +18,6 @@ export class AuthGuard implements CanActivate {
     //     return of(false);
     //   })
     // );
-
     return this.store.select(fromRoot.getUser).pipe(
       map(user => {
         if (user.uid) {
