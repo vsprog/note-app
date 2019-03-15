@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 import * as UserActions from '../actions/user.actions';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 type Action = UserActions.All;
 
 import {switchMap, map, mergeMap, catchError} from 'rxjs/operators';

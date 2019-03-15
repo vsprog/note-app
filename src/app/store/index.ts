@@ -1,8 +1,8 @@
 import {ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer} from '@ngrx/store';
 import {storeLogger} from 'ngrx-store-logger';
 import {environment} from '../../environments/environment';
-import * as fromUser from './user.reducers';
-import * as fromCards from './cards';
+import * as fromUser from './reducers/user.reducers';
+import * as fromCards from './reducers/cards';
 
 export interface State {
   userState: fromUser.State;

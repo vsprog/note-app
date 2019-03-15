@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as fromRoot from './reducers';
-import * as user from './actions/user.actions';
+import * as fromRoot from './store/index';
+import * as user from './store/actions/user.actions';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from './models/user.model';

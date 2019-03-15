@@ -1,5 +1,5 @@
 import * as actionCards from '../actions/cards';
-import { Card } from '../models/card';
+import { Card } from '../../models/card';
 
 export interface State {
     cards: Array<Card>;

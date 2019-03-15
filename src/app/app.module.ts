@@ -15,9 +15,9 @@ import { NewCardInputComponent } from './new-card-input/new-card-input.component
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers } from './reducers';
-import { UserEffects } from './effects/user.effects';
-import { CardsEffects } from './effects/cards.effects';
+import { reducers, metaReducers } from './store/index';
+import { UserEffects } from './store/effects/user.effects';
+import { CardsEffects } from './store/effects/cards.effects';
 import { AuthService } from './services/auth.service';
 import { CardService } from './services/card.service';
 
