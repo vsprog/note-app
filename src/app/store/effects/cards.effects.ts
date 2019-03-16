@@ -46,6 +46,16 @@ export class CardsEffects {
   );
 
   @Effect({dispatch: false})
+  removeCards$ = this.actions$.pipe(
+    ofType(Cards.REMOVE),
+    map((action: Cards.Remove) => action.payload),
+    exhaustMap(payload => {
+      this.cardService.deleteCard(payload);
+      return of(null);
+    })
+  );
+
+  @Effect({dispatch: false})
   serverFailure$ = this.actions$.pipe(
       ofType(Cards.SERVER_FAILURE),
       map((action: Cards.ServerFailure) => action.payload),

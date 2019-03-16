@@ -4,12 +4,12 @@ import { AuthService } from '../../services/auth.service';
 
 import * as UserActions from '../actions/user.actions';
 import { User } from '../../models/user.model';
-type Action = UserActions.All;
 
 import {switchMap, map, mergeMap, catchError} from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
 import { of } from 'rxjs/observable/of';
-import { defer } from 'rxjs/observable/defer';
+
+type Action = UserActions.All;
 
 @Injectable()
 export class UserEffects {

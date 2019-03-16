@@ -1,5 +1,14 @@
-<div class="card">
+<div class="card text-left">
   <div class="card-block">
-    <p class="card-text">{{card.text}}</p>
+    <div class="card-header">
+      Header
+      <button type="button" class="close float-sm-right" aria-label="Close" (click)="removeCard($event)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="card-body text-secondary">
+        <h5 class="card-title">{{card.text}}</h5>
+        <p class="card-text">{{card.text}}</p>
+    </div>
   </div>
 </div>
