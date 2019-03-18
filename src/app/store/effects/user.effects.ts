@@ -24,7 +24,7 @@ export class UserEffects {
         return this.authService.getUser().pipe(
           map(authData => {
             if (authData) {
-              const user = new User(authData.uid, authData.displayName);
+              const user = new User(authData.uid, authData.displayName, authData.photoURL);
               return new UserActions.Authenticated(user);
             } else {
                 return new UserActions.NotAuthenticated();

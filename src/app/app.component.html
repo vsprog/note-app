@@ -12,9 +12,10 @@
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['about']">About</a>
       </li>
-      <li class="nav-item dropdown ml-auto">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ (user$ | async)?.displayName }}
+      <li class="nav-item dropdown ml-auto">        
+        <a class="nav-link dropdown-toggle d-inline w-100" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
+          <img class="rounded-circle" src="{{ (user$ | async)?.photoURL || 'http://valencia.by/wp-content/themes/valencia-theme/img/user.png' }}" alt="" width="40px" height="40px">
+          <span class="m-2 d-inline-block">{{ (user$ | async)?.displayName }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">Sign in</a>
