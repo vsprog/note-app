@@ -12,17 +12,14 @@
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['about']">About</a>
       </li>
-      <li class="nav-item dropdown ml-auto">        
-        <a class="nav-link dropdown-toggle d-inline w-100" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">          
-          <img class="rounded-circle" src="{{ (user$ | async)?.photoURL || 'http://valencia.by/wp-content/themes/valencia-theme/img/user.png' }}" alt="" width="40px" height="40px">
-          <span class="m-2 d-inline-block">{{ (user$ | async)?.displayName }}</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Sign in</a>
-          <a class="dropdown-item" href="#" (click)="SignInGoogle($event)">Sign in with Google</a>
-          <a class="dropdown-item" href="#">Sign up</a>
-          <a class="dropdown-item" href="#" (click)="SignOut($event)">Sign out</a>
-        </div>
+      <li *ngIf="!(user$ | async)?.uid" class="nav-item ml-auto">
+        <a class="nav-link border border-secondary mr-2 d-inline-block" [routerLink]="['login']">Sign in</a>
+        <a class="nav-link border border-secondary d-inline-block" [routerLink]="['register']">Sign up</a>            
+      </li>
+      <li *ngIf="(user$ | async)?.uid" class="nav-item ml-auto">
+        <img class="rounded-circle" src="{{ (user$ | async)?.photoURL || '../assets/img/user.png' }}" alt="" width="40px" height="40px">
+        <span class="text-light m-2 d-inline-block">{{ (user$ | async)?.displayName }}</span>
+        <a class="text-info border border-info px-1 d-inline-block" href="#" (click)="SignOut($event)">Sign out</a>
       </li>
     </ul>
   </div>
