@@ -10,10 +10,10 @@ import { Store } from '@ngrx/store';
   template: `
   <div class="container-fluid text-center pb-5">
     <div class="row justify-content-end">
-      <app-new-card-input (oCardAdd)="addCard($event)"></app-new-card-input>
+      <app-new-card-input (toCardAdd)="addCard($event)"></app-new-card-input>
     </div>
   </div>
-  <app-card-list [cards]="cards$ | async"></app-card-list>
+  <app-card-list (toRemoveCard)="removeCard($event)" [cards]="cards$ | async"></app-card-list>
   `,
   styleUrls: []
 })
@@ -29,6 +29,10 @@ export class MainComponent implements OnInit {
 
   addCard(card: Card) {
     this.store.dispatch(new cards.Add(card));
+  }
+
+  removeCard(id: any) {
+    this.store.dispatch(new cards.Remove(id));
   }
 
 }

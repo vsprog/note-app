@@ -1,7 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
-import * as fromRoot from '../store/index';
-import * as cards from '../store/actions/cards';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -10,13 +7,14 @@ import * as cards from '../store/actions/cards';
 })
 export class CardComponent implements OnInit {
   @Input() card: any;
+  @Output() toRemove = new EventEmitter<string>();
 
-  constructor(private store: Store<fromRoot.State>) {}
+  constructor() {}
 
   ngOnInit() {}
 
-  removeCard(event: MouseEvent): void {
-    this.store.dispatch(new cards.Remove(this.card.$key));
+  removeCard(id: any): void {
+    this.toRemove.emit(id);
   }
 
 }

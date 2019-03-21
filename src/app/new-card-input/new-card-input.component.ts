@@ -11,7 +11,7 @@ import { Card } from '../models/card';
 })
 export class NewCardInputComponent implements OnInit, OnDestroy  {
   public newCard: any = {text: ''};
-  @Output() oCardAdd = new EventEmitter<Card>();
+  @Output() toCardAdd = new EventEmitter<Card>();
   // @ViewChild('form') public form: NgForm;
   newCardForm: FormGroup;
   private alive = true;
@@ -41,7 +41,7 @@ export class NewCardInputComponent implements OnInit, OnDestroy  {
   }
 
   addCard(text) {
-    this.oCardAdd.emit(new Card(text));
+    this.toCardAdd.emit(new Card(text));
     this.newCardForm.controls['text'].setValue('');
   }
 
