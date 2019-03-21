@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logInModalLabel">Sign in to note-app</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <form [formGroup]="loginForm">  
+          <div class="form-group">    
+            <input type="email" placeholder="E-mail *" formControlName="email" class="form-control" required>
+          </div>
+          <div class="form-group">    
+            <input type="password" placeholder="Password *" formControlName="password" class="form-control" required>
+            <label class="error">{{errorMessage}}</label>
+            <label class="success">{{successMessage}}</label>
+          </div>
+          <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-primary">Log In</button>
+        </form> -->
+      </div>
+      <div class="modal-footer">        
+        <a href="#" class="" (click)="SignIn('google')" data-dismiss="modal">
+          <img class="rounded-circle" src="../assets/img/google.jpg" alt="" width="30px" height="30px">
+          Log In with Google
+        </a>
+        <a href="#" class="" (click)="SignIn('github')" data-dismiss="modal">
+            <img class="rounded-circle" src="../assets/img/github.png" alt="" width="30px" height="30px">
+            Log In with Github
+          </a>
+      </div>
+    </div>
+  </div>
+</div>

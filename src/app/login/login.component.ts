@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -6,15 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @Output() toLogIn = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  SignInGoogle(event: MouseEvent): void {
-    event.stopPropagation();
-
+  SignIn(provider: any): void {
+    this.toLogIn.emit(provider);
   }
 
 }

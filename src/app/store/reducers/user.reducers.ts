@@ -13,8 +13,8 @@ const initialState: State = {
 
 export function reducer(state = initialState, action: actionUser.All): State {
   switch (action.type) {
-    case actionUser.GET_USER:
-        return { ...state, user: action.payload, loading: true };
+    // case actionUser.GET_USER:
+    //     return { ...state, user: action.payload, loading: true };
 
     case actionUser.AUTHENTICATED:
         return { ...state, user: action.payload, loading: false };
@@ -22,17 +22,17 @@ export function reducer(state = initialState, action: actionUser.All): State {
     case actionUser.NOT_AUTHENTICATED:
         return { ...state, ...initialState, loading: false };
 
-    case actionUser.GOOGLE_LOGIN:
-      return { ...state, loading: true };
+    // case actionUser.GOOGLE_LOGIN:
+    //   return { ...state, loading: true };
 
-    case actionUser.EMAIL_LOGIN:
-      return { ...state, loading: true };
+    // case actionUser.EMAIL_LOGIN:
+    //   return { ...state, loading: true };
 
     case actionUser.AUTH_ERROR:
       return { ...state, ...action.payload, loading: false };
 
-    case actionUser.LOGOUT:
-      return { ...state, loading: true };
+    // case actionUser.LOGOUT:
+    //   return { ...state, loading: true };
 
     default:
       return state;

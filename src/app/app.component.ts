@@ -24,4 +24,12 @@ export class AppComponent implements OnInit {
     event.stopPropagation();
     this.store.dispatch(new user.Logout());
   }
+
+  SignIn(provider: string) {
+    switch (provider) {
+      case 'google':
+        this.store.dispatch(new user.GoogleLogin());
+        break;
+    }
+  }
 }

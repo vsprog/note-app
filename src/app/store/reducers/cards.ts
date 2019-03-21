@@ -16,12 +16,12 @@ export function reducer(state = initialState, action: actionCards.Actions): Stat
       //       ...state,
       //       cards: [...state.cards, action.payload]
       //   };
-      case actionCards.REMOVE:
-        const index = state.cards.map((card) => card.$key).indexOf(action.payload);
-        return {
-            ...state,
-            cards: [...state.cards.slice(0, index), ...state.cards.slice(index + 1)]
-        };
+      // case actionCards.REMOVE:
+      //   const index = state.cards.map((card) => card.$key).indexOf(action.payload);
+      //   return {
+      //       ...state,
+      //       cards: [...state.cards.slice(0, index), ...state.cards.slice(index + 1)]
+      //   };
       case actionCards.LOAD_SUCCESS:
         return {
             ...state,
