@@ -38,7 +38,7 @@ export class GoogleLogin implements Action {
 /// Email Login Actions
 export class EmailLogin implements Action {
   readonly type = EMAIL_LOGIN;
-  constructor(public payload?: any) {}
+  constructor(public payload: any) {}
 }
 
 /// Logout Actions

@@ -25,7 +25,11 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new user.Logout());
   }
 
-  SignIn(provider: string) {
+  SignIn(provider: any) {
+    if (typeof provider === 'object') {
+      this.store.dispatch(new user.EmailLogin(provider));
+      return;
+    }
     switch (provider) {
       case 'google':
         this.store.dispatch(new user.GoogleLogin());
