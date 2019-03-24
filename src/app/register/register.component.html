@@ -1,17 +1,31 @@
-<form [formGroup]="registerForm">
-  <div class="form-group">
-    <label>Name</label>
-    <input type="text" formControlName="name" class="form-control" required maxlength="25">
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <input placeholder="Name *" type="text" formControlName="name" class="form-control" required maxlength="25">
+          </div>
+          <div class="form-group">    
+            <input placeholder="E-mail *" type="email" formControlName="email" class="form-control" required>
+          </div>
+          <div class="form-group">    
+            <input placeholder="Password *" type="password" class="form-control" formControlName="password" required>
+            <span class="error">{{errorMessage}}</span>
+            <span class="success">{{successMessage}}</span>
+          </div>
+          <div class="form-group mb-4">    
+            <input placeholder="Photo url *" type="text" class="form-control" formControlName="photo">    
+          </div>
+          <button type="submit" [disabled]="registerForm.invalid" (click)="tryRegister(registerForm.value)" class="btn btn-outline-primary" data-dismiss="modal">Register</button>
+        </form>
+      </div>      
+    </div>
   </div>
-  <div class="form-group">
-    <label>Email address</label>
-    <input type="email" formControlName="email" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" formControlName="password" required>
-    <label class="error">{{errorMessage}}</label>
-    <label class="success">{{successMessage}}</label>
-  </div>
-  <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
-</form>
+</div>

@@ -12,12 +12,12 @@
           <div class="form-group">    
             <input type="email" placeholder="E-mail *" formControlName="email" class="form-control" required>
           </div>
-          <div class="form-group">    
+          <div class="form-group mb-4">    
             <input type="password" placeholder="Password *" formControlName="password" class="form-control" required>
-            <label class="error">{{errorMessage}}</label>
-            <label class="success">{{successMessage}}</label>
+            <span class="error">{{errorMessage}}</span>
+            <span class="success">{{successMessage}}</span>
           </div>
-          <button type="submit" (click)="SignIn(logForm.value)" class="btn btn-primary" data-dismiss="modal">Log In</button>
+          <button type="submit" [disabled]="logForm.invalid" (click)="SignIn(logForm.value)" class="btn btn-primary" data-dismiss="modal">Log In</button>
         </form>
       </div>
       <div class="modal-footer">        

@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import * as UserActions from '../actions/user.actions';
 import { User } from '../../models/user.model';
 
-import {switchMap, map, mergeMap, catchError} from 'rxjs/operators';
+import {switchMap, map, mergeMap, catchError, exhaustMap} from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 
@@ -59,6 +59,17 @@ export class UserEffects {
         return new UserActions.GetUser();
       }),
       catchError(err => of(new UserActions.AuthError({error: err.message})))
+    );
+
+    @Effect({dispatch: false})
+    signUp$ = this.actions$.pipe(
+      ofType(UserActions.SIGN_UP),
+      map((action: UserActions.SignUp) => action.payload),
+      exhaustMap(payload => this.authService.signUp(payload).pipe(
+        map(credential => from(credential.user.updateProfile({displayName: payload.name, photoURL: payload.photo}))),
+        map(() => of(null)),
+        catchError(err => of(new UserActions.AuthError({error: err.message})))
+      ))
     );
 
     @Effect()

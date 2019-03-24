@@ -25,6 +25,10 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new user.Logout());
   }
 
+  Register(userData: any): void {
+    this.store.dispatch(new user.SignUp(userData));
+  }
+
   SignIn(provider: any) {
     if (typeof provider === 'object') {
       this.store.dispatch(new user.EmailLogin(provider));
@@ -33,6 +37,8 @@ export class AppComponent implements OnInit {
     switch (provider) {
       case 'google':
         this.store.dispatch(new user.GoogleLogin());
+        break;
+      case 'github':
         break;
     }
   }

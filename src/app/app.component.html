@@ -15,7 +15,8 @@
       <li *ngIf="!(user$ | async)?.uid" class="nav-item ml-auto">
         <button type="button" class="nav-link btn btn-outline-dark border border-secondary mr-2 d-inline-block" data-toggle="modal" data-target="#logInModal">Sign in</button>
         <!-- [routerLink]="['login']" -->
-        <button type="button"  class="nav-link btn btn-outline-dark border border-secondary d-inline-block" [routerLink]="['register']">Sign up</button>            
+        <button type="button"  class="nav-link btn btn-outline-dark border border-secondary d-inline-block" data-toggle="modal" data-target="#registerModal">Sign up</button>
+        <!--  [routerLink]="['register']" -->
       </li>
       <li *ngIf="(user$ | async)?.uid" class="nav-item ml-auto">
         <img class="rounded-circle" src="{{ (user$ | async)?.photoURL || '../assets/img/user.png' }}" alt="" width="40px" height="40px">
@@ -26,4 +27,5 @@
   </div>
 </nav>
 <app-login (toLogIn)="SignIn($event)" ></app-login>
+<app-register (toRegister)="Register($event)" ></app-register>
 <router-outlet></router-outlet>
