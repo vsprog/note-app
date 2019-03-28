@@ -6,6 +6,7 @@ export const NOT_AUTHENTICATED = '[Auth] Not Authenticated';
 export const GOOGLE_LOGIN = '[Auth] Google login attempt';
 export const EMAIL_LOGIN = '[Auth] Email login attempt';
 export const SIGN_UP = '[Auth] Register user';
+export const UPDATE_PROFILE = '[Auth] Update profile';
 export const LOGOUT = '[Auth] Logout';
 export const AUTH_ERROR = '[Auth] Error';
 
@@ -36,6 +37,12 @@ export class GoogleLogin implements Action {
   constructor(public payload?: any) {}
 }
 
+/// Email Login Actions
+export class EmailLogin implements Action {
+  readonly type = EMAIL_LOGIN;
+  constructor(public payload: any) {}
+}
+
 /// Sign up action
 export class SignUp implements Action {
   readonly type = SIGN_UP;
@@ -43,8 +50,8 @@ export class SignUp implements Action {
 }
 
 /// Email Login Actions
-export class EmailLogin implements Action {
-  readonly type = EMAIL_LOGIN;
+export class UpdateProfile implements Action {
+  readonly type = UPDATE_PROFILE;
   constructor(public payload: any) {}
 }
 
@@ -54,4 +61,12 @@ export class Logout implements Action {
   constructor(public payload?: any) {}
 }
 
-export type All = GetUser | Authenticated | NotAuthenticated | GoogleLogin | EmailLogin | AuthError | Logout | SignUp;
+export type All = GetUser
+| Authenticated
+| NotAuthenticated
+| GoogleLogin
+| EmailLogin
+| AuthError
+| Logout
+| SignUp
+| UpdateProfile;

@@ -52,36 +52,44 @@ export class UserEffects {
     loginEmail$: Observable<Action> = this.actions$.pipe(
       ofType(UserActions.EMAIL_LOGIN),
       map((action: UserActions.EmailLogin) => action.payload),
-      switchMap(payload => {
-        return this.authService.emailLogin(payload);
-      }),
-      map(credential => {
-        return new UserActions.GetUser();
+      exhaustMap(payload => {
+        this.authService.emailLogin(payload);
+        return of(null);
       }),
       catchError(err => of(new UserActions.AuthError({error: err.message})))
     );
 
-    @Effect({dispatch: false})
+    @Effect()
     signUp$ = this.actions$.pipe(
       ofType(UserActions.SIGN_UP),
       map((action: UserActions.SignUp) => action.payload),
-      exhaustMap(payload => this.authService.signUp(payload).pipe(
-        map(credential => from(credential.user.updateProfile({displayName: payload.name, photoURL: payload.photo}))),
-        map(() => of(null)),
-        catchError(err => of(new UserActions.AuthError({error: err.message})))
-      ))
+      mergeMap(payload => {
+        return this.authService.signUp(payload).pipe(
+          map(credential => new UserActions.UpdateProfile(payload)),
+          catchError(err => of(new UserActions.AuthError({error: err.message})))
+        );
+      })
+    );
+
+    @Effect()
+    updateProfile$ = this.actions$.pipe(
+      ofType(UserActions.UPDATE_PROFILE),
+      map((action: UserActions.UpdateProfile) => action.payload),
+      mergeMap(payload => {
+        return this.authService.updateProfile(payload).pipe(
+          map(credential => new UserActions.GetUser()),
+          catchError(err => of(new UserActions.AuthError({error: err.message})))
+        );
+      })
     );
 
     @Effect()
     logout$: Observable<Action> = this.actions$.pipe(
       ofType(UserActions.LOGOUT),
-      mergeMap(action => {
-        return this.authService.logout().pipe(
-          map(authData  => {
-            return new UserActions.NotAuthenticated();
-          }),
-          catchError(err => of(new UserActions.AuthError({error: err.message})))
-        );
+      map((action: UserActions.Logout) => action.payload),
+      map(payload => {
+        this.authService.logout();
+        return new UserActions.NotAuthenticated();
       })
     );
 }
