@@ -26,6 +26,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from 'src/environments/environment';
 import { routes } from './app.routing';
+import { EditorComponent } from './editor/editor.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { routes } from './app.routing';
     CardComponent,
     CardListComponent,
     NewCardInputComponent,
+    EditorComponent,
   ],
   imports: [
     BrowserModule,

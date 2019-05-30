@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Card } from '../models/card';
+import { Card } from '../models/card.model';
 import * as fromRoot from '../store/index';
 import * as cards from '../store/actions/cards';
 import { Store } from '@ngrx/store';

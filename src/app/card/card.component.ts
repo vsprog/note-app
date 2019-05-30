@@ -8,6 +8,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 export class CardComponent implements OnInit {
   @Input() card: any;
   @Output() toRemove = new EventEmitter<string>();
+  @Output() toEdit = new EventEmitter<string>();
 
   constructor() {}
 
@@ -15,6 +16,10 @@ export class CardComponent implements OnInit {
 
   removeCard(id: any): void {
     this.toRemove.emit(id);
+  }
+
+  editCard(id: any): void {
+    this.toEdit.emit(id);
   }
 
 }

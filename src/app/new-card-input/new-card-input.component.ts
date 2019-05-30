@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter, HostListener, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { takeWhile, debounceTime, filter } from 'rxjs/operators';
-import { Card } from '../models/card';
+import { Card } from '../models/card.model';
 
 @Component({
   selector: 'app-new-card-input',

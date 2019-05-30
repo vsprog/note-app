@@ -1,14 +1,23 @@
 <div class="card text-left">
   <div class="card-block">
     <div class="card-header">
-      Header
-      <button type="button" class="close float-sm-right" aria-label="Close" (click)="removeCard(card.$key)">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      {{card.title}}
+      <div class="float-right d-inline-block">
+        <button type="button" class="close pr-2 float-none" (click)="editCard(card)" data-toggle="modal" data-target="#cardEditorModal">
+          <img 
+            src="../../assets/img/pen.svg" 
+            alt="pen"            
+            height="16px"
+            width="16px" />
+        </button>
+        <button type="button" class="close float-none" aria-label="Close" (click)="removeCard(card.$key)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     </div>
     <div class="card-body text-secondary">
-        <h5 class="card-title">{{card.text}}</h5>
-        <p class="card-text">{{card.text}}</p>
+        <!-- <h5 class="card-title">{{card.title}}</h5> -->
+        <p class="card-text">{{card.content}}</p>
     </div>
   </div>
 </div>

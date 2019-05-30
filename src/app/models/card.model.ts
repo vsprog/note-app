@@ -1,8 +1,9 @@
 export class Card {
   $key: string;
-  text: string;
+  title: string;
+  content: string;
 
   constructor(text: string) {
-      this.text = text;
+      this.title = text;
   }
 }
