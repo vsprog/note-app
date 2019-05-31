@@ -7,7 +7,6 @@ import { Card } from '../models/card.model';
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit {
-  public editingCard: Card;
   @Input() cards: Array<any>;
   @Output() toRemoveCard = new EventEmitter<string>();
 
@@ -18,10 +17,6 @@ export class CardListComponent implements OnInit {
 
   toRemove(id: any) {
     this.toRemoveCard.emit(id);
-  }
-
-  toEdit(card: any) {
-    this.editingCard = card;
   }
 
 }

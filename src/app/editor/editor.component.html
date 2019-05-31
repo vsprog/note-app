@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="cardEditorModalLabel">Edit *заголовок заметки*</h5>
+          <h5 class="modal-title" id="cardEditorModalLabel">Edit {{card?.title}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -10,15 +10,15 @@
         <div class="modal-body">
           <form [formGroup]="editorForm">
             <div class="form-group">
-              <input type="text" value="{{(card||{}).title}}" formControlName="title" class="form-control" required>
+              <input type="text" formControlName="title" class="form-control" required>
             </div>
             <div class="form-group">    
-              <textarea rows="15" value="{{(card||{}).content}}" formControlName="content" class="form-control" required></textarea>
+              <textarea rows="15" formControlName="content" class="form-control" required></textarea>
             </div>            
             <button 
               type="submit" 
               [disabled]="editorForm.invalid" 
-              (click)="trySave(registerForm.value)" 
+              (click)="trySave(editorForm.value)" 
               class="btn btn-outline-primary" 
               data-dismiss="modal">Save</button>
           </form>

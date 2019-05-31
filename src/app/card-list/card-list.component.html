@@ -5,7 +5,7 @@
       *ngFor="let card of cards" 
       [card]="card" 
       (toRemove)="toRemove($event)"
-      (toEdit)="toEdit($event)"></app-card>
+      (toEdit)="cardEditor.initFormData($event)"></app-card>
   </div>
 </div>
-<app-editor [card]="editingCard"></app-editor>
+<app-editor #cardEditor></app-editor>

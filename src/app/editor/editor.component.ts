@@ -8,7 +8,6 @@ import { Card } from '../models/card.model';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
-  @Input() card: Card;
   editorForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -23,6 +22,12 @@ export class EditorComponent implements OnInit {
 
   trySave(formData: any) {
     // this.toRegister.emit(formData);
+    console.log(formData);
+  }
+
+  initFormData(card: Card): void {
+    this.editorForm.controls['title'].setValue(card.title);
+    this.editorForm.controls['content'].setValue(card.content);
   }
 
 }
