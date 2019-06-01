@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Card } from '../models/card.model';
 import * as fromRoot from '../store/index';
-import * as cards from '../store/actions/cards';
+import * as cards from '../store/actions/cards.actions';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -13,7 +13,7 @@ import { Store } from '@ngrx/store';
       <app-new-card-input (toCardAdd)="addCard($event)"></app-new-card-input>
     </div>
   </div>
-  <app-card-list (toRemoveCard)="removeCard($event)" [cards]="cards$ | async"></app-card-list>
+  <app-card-list (toRemoveCard)="removeCard($event)" (toUpdateCard)="updateCard($event)" [cards]="cards$ | async"></app-card-list>
   `,
   styleUrls: []
 })
@@ -33,6 +33,10 @@ export class MainComponent implements OnInit {
 
   removeCard(id: any) {
     this.store.dispatch(new cards.Remove(id));
+  }
+
+  updateCard(data: any) {
+    this.store.dispatch(new cards.Update(data));
   }
 
 }

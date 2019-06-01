@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 export const ADD = '[Cards] Add';
 export const REMOVE = '[Cards] Remove';
 export const LOAD = '[Cards] Load';
+export const UPDATE = '[Cards] Update';
 export const LOAD_SUCCESS = '[Cards] Load Success';
 export const SERVER_FAILURE = '[Cards] Server failure';
 
@@ -22,14 +23,22 @@ export class Load implements Action {
 
 export class LoadSuccess implements Action {
     readonly type = LOAD_SUCCESS;
-
     constructor(public payload: any) {}
 }
 
 export class ServerFailure implements Action {
     readonly type = SERVER_FAILURE;
-
     constructor(public payload: any) {}
 }
 
-export type Actions = Add | Remove| Load | LoadSuccess | ServerFailure;
+export class Update implements Action {
+    readonly type = UPDATE;
+    constructor(public payload: any) {}
+}
+
+export type Actions = Add
+| Remove
+| Load
+| LoadSuccess
+| ServerFailure
+| Update;

@@ -1,4 +1,4 @@
-import * as actionCards from '../actions/cards';
+import * as actionCards from '../actions/cards.actions';
 import { Card } from '../../models/card.model';
 
 export interface State {

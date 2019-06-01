@@ -38,8 +38,6 @@ export class CardService {
     return card;
   }
 
-  // TODO: обновлять всю карту с названием и содержимым
-  // value = Card
   updateCard(key: string, value: any): void {
     this.cardsRef.update(key, value);
   }

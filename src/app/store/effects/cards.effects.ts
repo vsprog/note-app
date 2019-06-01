@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {CardService} from '../../services/card.service';
 
-import * as Cards from '../actions/cards';
+import * as Cards from '../actions/cards.actions';
 
 import {exhaustMap, map, mergeMap, catchError} from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
@@ -51,6 +51,16 @@ export class CardsEffects {
     map((action: Cards.Remove) => action.payload),
     exhaustMap(payload => {
       this.cardService.deleteCard(payload);
+      return of(null);
+    })
+  );
+
+  @Effect({dispatch: false})
+  updateCards$ = this.actions$.pipe(
+    ofType(Cards.UPDATE),
+    map((action: Cards.Update) => action.payload),
+    exhaustMap(payload => {
+      this.cardService.updateCard(payload.key, payload.value);
       return of(null);
     })
   );

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Card } from '../models/card.model';
 
@@ -9,6 +9,8 @@ import { Card } from '../models/card.model';
 })
 export class EditorComponent implements OnInit {
   editorForm: FormGroup;
+  @Output() toUpdate = new EventEmitter<any>();
+  private cardId: string;
 
   constructor(private fb: FormBuilder) {
     this.editorForm = fb.group({
@@ -21,11 +23,12 @@ export class EditorComponent implements OnInit {
   }
 
   trySave(formData: any) {
-    // this.toRegister.emit(formData);
-    console.log(formData);
+    const { title, content } = formData;
+    this.toUpdate.emit({key: this.cardId, value: new Card(title, content)});
   }
 
   initFormData(card: Card): void {
+    this.cardId = card.$key;
     this.editorForm.controls['title'].setValue(card.title);
     this.editorForm.controls['content'].setValue(card.content);
   }

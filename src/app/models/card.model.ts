@@ -3,7 +3,8 @@ export class Card {
   title: string;
   content: string;
 
-  constructor(text: string) {
-      this.title = text;
+  constructor(title: string, content?: string) {
+      this.title = title;
+      this.content = content;
   }
 }

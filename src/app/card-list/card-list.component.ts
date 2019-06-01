@@ -9,6 +9,7 @@ import { Card } from '../models/card.model';
 export class CardListComponent implements OnInit {
   @Input() cards: Array<any>;
   @Output() toRemoveCard = new EventEmitter<string>();
+  @Output() toUpdateCard = new EventEmitter<any>();
 
   constructor() { }
 
@@ -17,6 +18,10 @@ export class CardListComponent implements OnInit {
 
   toRemove(id: any) {
     this.toRemoveCard.emit(id);
+  }
+
+  toUpdate(data: any) {
+    this.toUpdateCard.emit(data);
   }
 
 }

@@ -8,4 +8,4 @@
       (toEdit)="cardEditor.initFormData($event)"></app-card>
   </div>
 </div>
-<app-editor #cardEditor></app-editor>
+<app-editor #cardEditor (toUpdate)="toUpdate($event)"></app-editor>
